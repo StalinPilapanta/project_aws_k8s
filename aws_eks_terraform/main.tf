@@ -3,15 +3,16 @@
 terraform {
   required_providers {
     aws = {
-        source = "hashicorp/aws"
+      source = "hashicorp/aws"
     }
   }
 
   backend "s3" {
-    bucket = var.remote-backend
-    key = "project/eks-aws"
-    region = var.region
+    bucket = "terraform-remote-state-projects"
+    key    = "project/eks-aws"
+    region = "us-east-1"
   }
+
 }
 
 provider "aws" {
@@ -28,7 +29,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "project-eks-{{var.environment}}"
+  cluster_name = "project-eks-${var.environment}"
 }
 
 resource "random_string" "suffix" {
