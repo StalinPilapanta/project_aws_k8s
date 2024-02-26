@@ -1,12 +1,12 @@
 name: 'Deploy Terraform on AWS'
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      makefile:
+        description: 'Colocar accion del make'
+        required: true
+        default: 'plan'
 
 jobs:
   terraform:
@@ -29,9 +29,5 @@ jobs:
       uses: hashicorp/setup-terraform@v1
         
     - name: Terraform Plan
-      run: make plan
-      working-directory: ./aws_eks_terraform
-
-    - name: Terraform Apply
-      run: make deploy
+      run: make {{ github.event.inputs.makefile }}
       working-directory: ./aws_eks_terraform

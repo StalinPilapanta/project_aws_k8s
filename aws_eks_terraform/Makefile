@@ -5,8 +5,14 @@ plan:
 	terraform -chdir=./ fmt --recursive
 	terraform -chdir=./ plan -var-file dev.tfvars
 
-deploy:
+apply:
 	terraform -chdir=./ workspace select dev
 	terraform -chdir=./ validate
 	terraform -chdir=./ fmt --recursive
-	terraform -chdir=./ apply -var-file dev.tfvars -auto-approve 
+	terraform -chdir=./ apply -var-file dev.tfvars -auto-approve
+
+destroy:
+	terraform -chdir=./ workspace select dev
+	terraform -chdir=./ validate
+	terraform -chdir=./ fmt --recursive
+	terraform -chdir=./ destroy -var-file dev.tfvars -auto-approve
