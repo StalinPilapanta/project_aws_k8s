@@ -31,3 +31,7 @@ jobs:
     - name: Terraform Plan
       run: make plan
       working-directory: ./aws_eks_terraform
+
+       - name: Terraform Plan
+      run: make deploy
+      working-directory: ./aws_eks_terraform
