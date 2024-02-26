@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "mi_repositorio_ecr" {
-  name                 = "${var.resource_name}-ECR" # El nombre que deseas para el repositorio de ECR
+  name                 = "${var.resource_name}-ecr" # El nombre que deseas para el repositorio de ECR
   image_tag_mutability = "MUTABLE"                  # O "IMMUTABLE" si prefieres que las etiquetas de imagen no se puedan sobrescribir
 
   image_scanning_configuration {
