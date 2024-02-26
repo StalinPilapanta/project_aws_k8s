@@ -28,6 +28,6 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
         
-    - name: Terraform Plan
-      run: make {{ github.event.inputs.makefile }}
+    - name: Terraform Execution
+      run: make github.event.inputs.makefile
       working-directory: ./aws_eks_terraform
