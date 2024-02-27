@@ -15,6 +15,7 @@ pipeline{
         stage("dir"){
             steps{
                 sh '''ls -ltr
+                        cd front-app-k8s
                         npm --version
                         node --version
                       '''
@@ -22,19 +23,24 @@ pipeline{
         }
         stage("Install"){
             steps{
-                sh '''npm install
+                sh '''
+                    cd front-app-k8s
+                    npm install
                       '''
             }
         }
         stage("Build"){
             steps{
-                sh '''npm run build
-                      '''
+                sh '''
+                    cd front-app-k8s
+                    npm run build
+                    '''
             }
         }
         stage("Push Image"){
             steps{
                 sh'''
+                    cd front-app-k8s
                     aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $registry
                     docker build -t dev-ecr .
                     docker tag dev-ecr:latest $registry:latest
