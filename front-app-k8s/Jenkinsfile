@@ -12,7 +12,7 @@ pipeline{
         //        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinsgit', url: 'git@github.com:StalinPilapanta/project_aws_k8s.git']]])
         //    }
         //}
-        stage("dir"){
+        stage("Review Directory"){
             steps{
                 sh '''ls -ltr
                         cd front-app-k8s
