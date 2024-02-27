@@ -6,12 +6,12 @@ pipeline{
     }
 
     stages{
-        stage('Checkout'){
-            steps {
-                // Checkout code repo
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinsgit', url: 'git@github.com:StalinPilapanta/project_aws_k8s.git']]])
-            }
-        }
+        //stage('Checkout'){
+        //    steps {
+        //        // Checkout code repo
+        //        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinsgit', url: 'git@github.com:StalinPilapanta/project_aws_k8s.git']]])
+        //    }
+        //}
         stage("dir"){
             steps{
                 sh '''ls -ltr
