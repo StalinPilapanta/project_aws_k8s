@@ -9,7 +9,7 @@ pipeline{
         stage('Checkout'){
             steps {
                 // Checkout code repo
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins', url: 'git@bitbucket.org:directvla/front-app-k8s.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinsgit', url: 'git@github.com:StalinPilapanta/project_aws_k8s.git']]])
             }
         }
         stage("dir"){
