@@ -48,5 +48,17 @@ pipeline{
                 '''
             }
         }
+        stage("Deploy in EKS"){
+            steps{
+                sh'''
+                    cd front-app-k8s
+                    aws eks update-kubeconfig --region us-east-1 --name dev-eks
+                    kubectl get nodes
+                    kubectl apply -f front.yaml
+                    kubectl delete -f deployment.yml
+                    kubectl apply -f deployment.yml
+                '''
+            }
+        }
     }
 }
