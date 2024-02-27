@@ -1,0 +1,46 @@
+pipeline{
+    agent any
+
+    environment {
+        registry = "109669590912.dkr.ecr.us-east-1.amazonaws.com/dev-ecr"
+    }
+
+    stages{
+        stage('Checkout'){
+            steps {
+                // Checkout code repo
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkins', url: 'git@bitbucket.org:directvla/front-app-k8s.git']]])
+            }
+        }
+        stage("dir"){
+            steps{
+                sh '''ls -ltr
+                        npm --version
+                        node --version
+                      '''
+            }
+        }
+        stage("Install"){
+            steps{
+                sh '''npm install
+                      '''
+            }
+        }
+        stage("Build"){
+            steps{
+                sh '''npm run build
+                      '''
+            }
+        }
+        stage("Push Image"){
+            steps{
+                sh'''
+                    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $registry
+                    docker build -t dev-ecr .
+                    docker tag dev-ecr:latest $registry:latest
+                    docker push $registry:latest
+                '''
+            }
+        }
+    }
+}
