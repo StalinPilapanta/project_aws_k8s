@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>React app deployed in Kubernetes deploy numero 1</h1>
+      <h1>React app deployed in Kubernetes deploy número 2 prueba online</h1>
       <div className="App-link">
           <p>PROTOTIPO DE PLANTILLA PARA LA AUTOMATIZACIÓN DE INFRAESTRUCTURA COMO CÓDIGO (IaC)</p>
           <p>EN UN ENTORNO KUBERNETES SIGUIENDO PRÁCTICAS DE DEVOPS</p>
