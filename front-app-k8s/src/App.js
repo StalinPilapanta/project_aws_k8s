@@ -9,6 +9,9 @@ function App() {
           <p>PROTOTIPO DE PLANTILLA PARA LA AUTOMATIZACIÓN DE INFRAESTRUCTURA COMO CÓDIGO (IaC)</p>
           <p>EN UN ENTORNO KUBERNETES SIGUIENDO PRÁCTICAS DE DEVOPS</p>
         </div>
+       <div className="App-link">
+          <p>Esta es una prueba de concepto</p>
+        </div>
         <div>
           <img src='uisrael.png' alt=""></img>
         </div>
