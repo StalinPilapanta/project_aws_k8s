@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: front
+  name: deployment-front
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: front-2048
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: front-2048
+    spec:
+      containers:
+      #- image: 737349677596.dkr.ecr.us-east-1.amazonaws.com/frontend/web-app:v1.0.2
+      - image: 737349677596.dkr.ecr.us-east-1.amazonaws.com/frontend/web-app:latest
+        name: front-2048
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"  # Reemplaza con la cantidad adecuada de memoria
+            cpu: "250m"      # Reemplaza con la cantidad adecuada de CPU
+          limits:
+            memory: "128Mi" # Reemplaza con la cantidad adecuada de memoria máxima
+            cpu: "500m" 
+        ports:
+          - containerPort: 80 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: front
+  name: service-front
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: front-2048
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: front
+  name: ingress-2048
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: service-front
+              port:
+                number: 80
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: front
+---

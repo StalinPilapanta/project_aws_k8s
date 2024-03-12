@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+
+    stages{
+        stage("Deploy in EKS"){
+            steps{
+                sh'''
+                    cd kubernetes
+                    aws eks update-kubeconfig --region us-east-1 --name dev-eks
+                    kubectl get nodes
+                    kubectl delete -f namespaces.yml
+                '''
+            }
+        }
+    }
+}
