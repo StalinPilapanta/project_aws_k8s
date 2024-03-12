@@ -1,3 +1,8 @@
+init:
+	terraform -chdir=./ init
+	terraform -chdir=./ workspace new dev
+	terraform -chdir=./ validate
+	terraform -chdir=./ fmt --recursive
 plan:
 	terraform -chdir=./ init
 	terraform -chdir=./ workspace select dev
