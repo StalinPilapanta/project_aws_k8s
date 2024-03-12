@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       #- image: 737349677596.dkr.ecr.us-east-1.amazonaws.com/frontend/web-app:v1.0.2
-      - image: 109669590912.dkr.ecr.us-east-1.amazonaws.com/dev-ecr:latest
+      - image: 737349677596.dkr.ecr.us-east-1.amazonaws.com/dev-ecr:latest
         name: front-2048
         imagePullPolicy: Always
         resources:
