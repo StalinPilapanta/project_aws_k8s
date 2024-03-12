@@ -8,7 +8,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "terraform-remote-state-projects"
+    bucket = "terraform-remote-state-projects-cspilapa"
     key    = "project/eks-aws"
     region = "us-east-1"
   }
