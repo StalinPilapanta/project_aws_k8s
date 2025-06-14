@@ -6,14 +6,14 @@ function App() {
     <div className="App">
       <h1>React app deployed in Kubernetes deploy número 3 prueba online</h1>
       <div className="App-link">
-          <p>PROTOTIPO DE PLANTILLA PARA LA AUTOMATIZACIÓN DE INFRAESTRUCTURA COMO CÓDIGO (IaC)</p>
-          <p>EN UN ENTORNO KUBERNETES SIGUIENDO PRÁCTICAS DE DEVOPS</p>
+          <p>Actividad grupal 3</p>
+          <p>Kubernetes DevOps</p>
         </div>
        <div className="App-link">
-          <p>Esta es una prueba de concepto presentación componente practico</p>
+          <p>Prueba de concepto para la practica de Contenedores</p>
         </div>
         <div>
-          <img src='uisrael.png' alt=""></img>
+          <img src='unir.png' alt=""></img>
         </div>
         <div className='form-box'>
           <input type="text" name="movieName" placeholder='Name'/>
